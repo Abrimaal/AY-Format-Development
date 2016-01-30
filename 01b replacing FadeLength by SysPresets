@@ -1,0 +1,56 @@
+published 2014-2015 by Abrimaal.
+public domain
+
+FadeLength renamed to SysPresets, values in binary
+
+=============================================================
+
+THE LOWER BYTE
+
+The lower byte specifies the hardware configuration. Z80 and interrupt frequency.
+
+0|00|00000 - default value for ZX Spectrum Z80 @3.54MHz, AY @1.77MHz, IR @50Hz
+
+x|x1|xxxxx - bit 5 set indicates NTSC, interrupt rate @60Hz
+x|1x|xxxxx - bit 6 set indicates double interrupt frequency, 100Hz or 120Hz.
+If such a configuration is not used, this bit will be reserved for special features.
+
+0|xx|xxxxx - if bit 7 is not set, bits 0-4 define Z80 frequency for fine tuning
+0|xx|00000 - bits 0-4 = 0 are reserved for ZX Spectrum defaults.
+0|00|00001 to 0|00|11111 are various frequencies of Z80 in PAL mode. 
+
+The lower values are reserved for Z80 running at common frequencies in various 
+hardware @1MHz, 2.00, ZX81=~3.25, ZX16k=~3.48, CPC=4.00, 6.00, 7.00, 8.00, 14.00 etc.
+The highest values will be somehow elastic, to be adjustable by the software developers.
+It will allow to define precisely the playing time for non-interrupt sounds such as 
+samples, beeper engines and for ZX clones (or evolution hardware) not always using identical frequencies. 
+
+1|00|00000 - the highest byte set indicates a non-ZX hardware. 
+This value is reserved for Amstrad CPC (Z80 @4.00MHz, AY @1.00MHz, IR @standard - music routine called at 50Hz)
+
+1|00|00001 - and so on to 1|xx|xxxxx - specify different hardware configurations. 
+
+When the bit 7 is set, the Z80 and sound chip frequencies are forced by default. 
+Bits 0-4 are used to define hardware configurations such as:
+
+1|00|00000 = Amstrad CPC (interrupt music only)
+1|00|00001 = Amstrad CPC (full emulation for samples, digi music etc.)
+1|00|00010 = SAM Coupe (interrupt music only)
+1|00|00011 = SAM Coupe (full emulation for samples, digi music etc.)
+1|00|00010 to 1|xx|11111 = yet another, evolutionary ZX-based computers, 
+consoles using Z80+AY or Z80+different soundchip(s), arcade cabinets etc.
+
+=============================================================
+
+THE HIGHER BYTE specifies the sound chip(s) setting.
+
+For standard configurations, forced by bit 7 of the low byte, the higher byte should be = 0. 
+While the low byte = 10000010 indicates SAM Coupe with SAA-1099 chip, it is not necessary to 
+specify the sound chip in the high byte.
+
+In case of ZX Spectrum with SAA chip, that may possibly use custom player engines, 
+containing sample players or two chips playing simultaneously, such configuration 
+must be defined in the high byte. 
+The same refers to double AY chip (turbosound), AY+SAA, AY+YM2xxx (turbosound FM), Amstrad CPC with two AY chips etc.
+
+The bit count and order for the presets must be discussed and if necessary, shifted or rearranged.
