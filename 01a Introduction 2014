@@ -1,0 +1,22 @@
+The development of the AY format
+by abrimaal@wp.pl 2014-10
+posted by Abrimaal at http://1bit.i-demo.pl/
+public domain
+
+Before all, the music player developers should be notified. Without them it will be useless.
+
+Listening to beeper music in three players (AYEmul, Modo and ZXTune) I have noticed that music engines not synchronized by interrupts, finish playing the music in different moments. Even if the SongLength is defined in one player to a 1/50 second, it may be played even a few seconds longer or shorter in another player. It was tested to re-clock the CPU speed and interrupt frequency, when one engine ended correctly, the other ended out of time. These beeper engines that are synchronized by interrupts end playing exactly when they should.
+The main difficulty for the music player developers is the emulation of the ZX Spectrum environment, different CPU speed in various hardware, slow and fast RAM, enabling and disabling interrupts within the music routine. All these things make the perfect emulation incredibly hard.
+
+Some things in the .ay file structure can be modified maintaining the backward compatibility with music players that are no longer developed. These are fields Player (1 byte) and the unused 2-byte FadeLength. Even if the CPU speed was precisely defined in the 2 bytes of FadeLength, it would be still different in various emulators. So, the proposal is to use individual bits of these 2 bytes as presets. By default, for 1/50s interrupt synchronized music, FadeLength will be =0. Different values of the lower byte of FadeLength will specify different CPU speed, to be selected experimentally by the software developer. However it must be tested which music engines require it. 256 available CPU speed presets will improve the accuracy, but it may not be abused with a different number for each beeper engine. We must remember that adjustable CPU speed will open the door for music from a lot of other machines that use Z80+ULA or Z80+AY (many arcade games, for example).
+
+Z80 speed presets. =0 will be the default ZX48 machine, and it will depend only on the player developer if he sets the value to 3494400Hz or 3500000 or other that will correspond with the defined song length (defined for AYEmul, which is not authoritary, because it is also an emulator).
+
+Special FX (SFX) engine needs no correction, it stops in the same moment in the music players, because it is synchronized by IM2 interrupt subroutine within the player.
+
+Music Box, Phaser and Tritone do not end in the same moment, so they would require these special values, or maybe just one value =1 would be enough.
+
+The higher byte, rarely used will be the AY internal clock. The most of players distinguish ZX from CPC by output ports. The common AY frequencies (chip tuning, to play lower or higher notes) are 1.00 for CPC, 1.77xxx for Spectrum and 1.75 for Pentagon. Atari ST uses 2.00, but it is not applicable here. The difference between 1.77xxx and 1.75 is probably non-recognizable for a human, but some music for the AY chip also requires precise tuning.
+Even in this way the high byte could be divided - 4 to 6 bits for AY freq, 2 to 4 bits for interrupt frequency, in case of NTSC or double freq.
+
+Such presets of the Z80 clock, in the low byte will not collide with older players (especially written for Amiga), that use the FadeLength, and the name "FadeLength" itself will be replaced with "SysPresets", what you can do to AYMakeR and AYSplittR without re-compiling, simply replacing the words in Notepad++.
