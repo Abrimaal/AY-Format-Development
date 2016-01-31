@@ -1,0 +1,19 @@
+Restrictions and limitations of AY format.
+1. Because of the file structure based on signed relative offsets (-32768 to 32767), 
+the largest file must be placed as the last in a multi-track .ay file. 
+1a. Many music players ignore the FirstSong. In this case all data may be compiled into a single block, 
+then moved at the proper address at .ay song INIT. The custom code at init address should contain such an example code
+DI
+LD HL, song_01_source
+LD DE, song_01_target
+LD BC, song_01_length
+LDIR
+EI
+JP song_init
+
+Repeat the sequence for all songs and assembly it together with the data block at the lowest address (recommended 16). 
+
+
+2. 64kB limit. Re-compiling AYMakeR and AYSplitter and changing offset values from 2 bytes to 4 will open new possibilities, 
+but it will be not compatible with the existing players. 
+This modification will allow to emulate memory banks and play uncompressed register dumps in the linear RAM.
