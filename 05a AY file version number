@@ -1,0 +1,25 @@
+When a new version of .ay file?
+
+- when new songs are added to the file
+- when the code is modified (shortened, added missing parts, re-assembled, added compression routine etc.)
+- when the name of the musician is changed (from unknown or misidentified)
+- when the playing time is corrected
+- when looped songs are recompiled or di-halted not to loop
+- when the player version is changed to fix errors in playing
+- when stack - init - interrupt addresses are changed to fix errors in playing
+- when registers are set to different values to fix errors
+- when system presets are changed
+
+when no need
+
+- when rearranging the song order
+- when the spelling, capitalization is corrected
+- when adding events like (game over) (intro) to the existing titles
+- when changing info in the misc section
+- when not applicable values are changed, without an effect in performance
+
+
+When a song from a single .ay file is added to an existing multitrack .ay file, 
+the version number of the multitrack file is increased.
+When a new .ay file is created by joining two or more existing .ay files, 
+the version number should be based on the file where the value is highest.
