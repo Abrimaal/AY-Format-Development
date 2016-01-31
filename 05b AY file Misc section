@@ -1,0 +1,78 @@
+AY File Header info
+
+Misc section:
+--------------------
+Syntax: Year1 Name1 (P) Year2 Name2 #Production @Event
+------------------
+
+Year
+
+A four digit number. The year of release. When the year is unknown, but the century known, 
+the last digits may be replaced with X or x. Please do not use "?" what may look like an unrecognized character.
+Examples: 198X 20xx 19XX
+
+When the year is totally unknown, simply skip it instead of typing XXXX.
+Example of the full misc section: (P)
+---------------------
+
+Names 
+
+The string after year is usually the name of the release company, group or a person who published the production. 
+If the name is identical as the Author name, it's better to put it there than leave it blank. 
+It specifies an independent release signed only by the Author. 
+The name may be skipped when other data is available.
+---------------------
+
+Optional and obsolete tags
+
+It is not necessary, even not desired to use the tags (C), (P) at the beginning, before the year. The recommended syntax is: 
+
+Misc=1986 Software
+not 
+Misc=(C) 1986 Software
+
+A capital letter in brackets like (P). It has nothing to the distribution licence and copyright.
+
+Tags used:
+
+(P) is the default for all music, it means "published, presented"
+
+(C) may contain copyright info, it is used mainly in commercial games released in 1982-1992, 
+the era of commercial arcade conversions, when the author of the AY music was not always the composer. 
+Example: (C) 1987 Software
+
+In other cases, (C) means "composed". To use this tag we must be sure that the Author of this tune composed it. 
+It also means "created", in case of non-musical productions like sound effects or sample packs.
+
+(M) - a mix, remix, modification of someone else's music. 
+Used for modifications of an original tune that uses the same (or similar) player routine or tracker. 
+It may be used for mixes/remixes that include changes of speed, pattern order, instrument samples. 
+May be also used for a conversion of an existing composition from one tracker to another that makes a difference 
+in sound perception. 
+Example: 1994 Author1 (M) 2010 Author2
+or 1994 Author1 / 2010 Author2
+
+(R) - a remake, rendition, conversion of music created by someone else on another platform like C64, NES, Amiga, arcade or PC. 
+It applies also to automatic conversions (from another platform, midi, wave etc.). 
+For cover versions of non-computer music, like classical music, rock, dance or other, 
+the tags who composed the original song are not necessary. 
+
+@ tag - use without brackets. For a composition presented at a compo, party. In most cases it is optional. 
+Please do not include info about the ranking (which place it took, what award it won).
+
+# tag - being one character, containing the name of production, where the song was published. 
+It may be a name of a game, music album, audiovisual scene art, if the song title is different than the production name.
+---------------------
+
+The misc info may contain more than 1 tag.
+
+Example for a tune composed in 1994 and published in a game in 2014:
+1994 Author or Group (P) 2014 Publisher
+or
+1994 Author or Group #2014 Game Name
+
+A song published in a party compo or a similar event:
+2012 @Some Party
+
+A song with its own title published in another production
+2000 #Megigademo
