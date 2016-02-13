@@ -37,7 +37,7 @@ Bits 0-4 are used to define hardware configurations such as:
 1|00|00001 = Amstrad CPC (full emulation for samples, digi music etc.)
 1|00|00010 = SAM Coupe (interrupt music only)
 1|00|00011 = SAM Coupe (full emulation for samples, digi music etc.)
-1|00|00010 to 1|xx|11111 = yet another, evolutionary ZX-based computers, 
+1|xx|00100 to 1|xx|11111 = yet another, evolutionary ZX-based computers, 
 consoles using Z80+AY or Z80+different soundchip(s), arcade cabinets etc.
 
 =============================================================
