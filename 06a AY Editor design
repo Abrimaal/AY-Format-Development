@@ -1,18 +1,18 @@
 [Browser][AY Editor][  ...  ][Settings]		  ;tabs
-==========================================	;displays all files
-<- Back     ^ Up			                    	;in the current folder, browser
-------------------------------------------	;buttons back and up
-no  name  	          	size    date	  	  ;name,size,date sort
+==========================================		;browser displays files in the current folder
+<- Back     ^ Up			       
+------------------------------------------		;buttons back and up
+no  name  	          	size    date		;sort by name,size,date
 ------------------------------------------      
-001 Filename_000.ay    	bytes 2000-10-20 ^	;file list	
-002 Filename_222.ay	     4555 2010-01-01 |	
-					                               |
-					                               v	;scrollbar
+001 Filename_000.ay      	bytes 2000-10-20 ^	;file list	
+002 Filename_222.ay	         4555 2010-01-01 |	
+					         |                     
+					         v      ;scrollbar
 ------------------------------------------
-file filter [ay][stc|pt3|bin|]*	[[reload]]	;displayed extensions, .ay always 
-						                                 active, other defined by user
-						                                  reload button if necessary
-
+file filter [ay][stc|pt3|bin|]*	[[reload]]		;displayed extensions, .ay always active, other defined by user
+						 	;reload button if necessary
+						                                  
+=======================================================================================================================
 
 
 [AY Editor]			      	                          ;tabs
@@ -20,53 +20,53 @@ file filter [ay][stc|pt3|bin|]*	[[reload]]	;displayed extensions, .ay always
 [[folder]][E:\music\aymusic\           path ]*		*=editable field
 [[openfile]] [File_name                ]*.[ay]		[[button]] [window]
 -------------------------------------------		    ;applicable to whole file
-File info:  type [AYEMUL]      
-author [    -text-	                    ]*
-misc [      -text-                      ]*
+File info:  type [AYEMUL]      				; type not editable, display only
+author [    -text-	                     ]*
+misc   [    -text-                           ]*
 player [1B]* file version [1B]* first song [1B]*
 -------------------------------------------		    ;applicable to track
 Song info: panning [1B][1B][1B][1B]		          	;fields not editable yet
-title [		-text-		                   	]*
+title [     -text-		             ]*
 stack [ word]* init [ word]* interrupt [ word]*
-time [mm:ss.ccc]* [[#]]	hi [1B]* lo [1B]*	        ;alternate views # button toggles time to 1/50s 
-time [word     ]* [[#]] reg [ word]*		          ;register value to word
-syspreset [00000000]*[00000000]* [ZX48][^]	      ;values in binary and preset list
-[[FL]] [1B]* [1B]* [word]*	 [[DEC]]	            ;additionally as bytes and word	
--------------------------------------------	      ;DEC/HEX applies to all byte/word
-Code info:		[[current song]]	                  ;button toggles loaded blocks for 
-[word]*[word]		[view]!	[X]		                    ;current song or whole file
-[word]*[word]		[view]!	[X]		                    ;blocks load address, code length
+time [mm:ss.ccc]* [[#]]	hi [1B]* lo [1B]*	        ;alternate views # button toggles time to 1/50s value
+time [word     ]* [[#]] reg [ word]*		        ;toggle register value from hi/lo to word (dec or hex)
+syspreset [00000000]*[00000000]* [ZX48][    v]	      ;values in binary [   v] is a preset list
+[[FL]] [1B]* [1B]* [word]*	 [[DEC]]	       ;additionally as bytes and word	
+-------------------------------------------	      ;DEC/HEX applies to all byte/word values
+Code info:		[[current song]]	      ;button toggles loaded blocks for current song or whole file
+[word]*[word]		[view]!	[X]		        ;blocks load address, code length          
+[word]*[word]		[view]!	[X]		                    
 [word]*[word]		[view]!	[X] [+]	                	;X=delete block +=add block
 --------------------------------------------
 [[<]]prev song		[[>]]next song	              	;buttons highlighted if more>1 songs
 song order 01<02<03<04   		                    	;change song order
 [[+]]add song          			                    	;add song button optional here
---------------------------------------------	    ;!open in ZX Preview add .bin, all 
-[[   APPLY CHANGES   ]]	  [[restore]]		          ;create backup, create .ini file,
---------------------------------------------	    ;run AYMaker
-Play in [[app1]] [[app2]] [[app3]] 			          ;external app icons
+--------------------------------------------	    ;!open in ZX Preview add .bin to supported files 
+[[   APPLY CHANGES   ]]	  [[restore]]		     ;THE MOST IMPORTANT - creates backup, creates .ini file, runs AYMaker
+--------------------------------------------	    
+Play in [[app1]] [[app2]] [[app3]] 	            ;external players to test, displayed app icons
 --------------------------------------------	
-[[<<]] prev file 	[[>>]] next file	              ;if changes made and file not saved
-							                                    ;confirm dialog
+[[<<]] prev file 	[[>>]] next file	    ;if changes made and file not saved display confirm dialog
+							                                  
 ============================================
 end
 
 
 [Settings]
-Source folder: [path         ]*         [...]
+Source folder: [path           ]*       [...]       ;path to copy or [...] button to browse
 Save (output) folder: [path         ]*  [...] 
-  [v] Save in source folder with suffix [text]    
+  [v] Save in source folder with suffix [text]      ;save modified files in the original folder
 AYMaker location: [path         ]*      [...]
   [v] Delete .ini files after save
 External player 1: [path         ]*     [...]
 External player 2: [path         ]*     [...]
 External player 3: [path         ]*     [...]
-Display numbers as (DEC)(HEX)		              	;radio options for default settings 
-Display time as (mm:ss.ccc)(1/50s)	          	;at startup
-Display (SysPresets)(Fadelength)		            ;button [[FL]] in the main window
-Displayed extensions [stc|bin|ini|pt3]*		      ;user-defined extensions displayed in 						  
-                                                ;browser except .ay, may be empty 
+Display numbers as (DEC)(HEX)		               ;radio options for default settings at startup
+Display time as (mm:ss.ccc)(1/50s)	          	
+Display (SysPresets)(Fadelength)		       ;button [[FL]] in the main window
+Displayed extensions [stc|bin|ini|pt3]*		       ;user-defined extensions displayed in browser except .ay, may be empty 						  
 =============================================
+end
 
 [ ... ] other tabs
 
@@ -80,3 +80,6 @@ author [Chipcrusher] changes any author name to Chipcrusher, not changing other 
 Also .cop player for SAA chip and some beeper trackers.
 
 [Join files] - join two or more .ay files into one or split a multitrack file into single song files.
+
+updated 2016-02-19
+free licence by Abrimaal
