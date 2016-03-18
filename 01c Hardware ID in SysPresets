@@ -32,4 +32,7 @@ ________________________________________________________________________________
 NOTE: The bit order in the high byte must be carefully arranged, considering as many as possible chip configurations, 
 multiple chips, custom sound cards. The values for 2xAY and SAA+AY may be temporary.
 
-Bit 2 of both bytes is 
+Bit 2 of both bytes is destined to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1024), 
+the player uses frequencies native to Pentagon AND the YM2149F chip instead of AY3-891x (the volumes are different).
+
+
