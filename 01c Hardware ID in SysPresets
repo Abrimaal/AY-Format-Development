@@ -15,11 +15,13 @@ DEC	HiByte LoByte 	BIN APU	 BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	 Out
  131	0	131	    00000000 10000011	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255	 NO          	full emulation
 
  256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	        YES           TurboSound
-													active AY1=OUT 65535,255 AY2=OUT 65535,254 
- 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	    STD			    NO            2xAY for CPC
-2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910             STD	        YES         	SAA Card for ZX
-                                                                     		  SAA 1099              511   255
-										  beeper (ULA)    	254			
+										  active AY1=OUT 65535,255 AY2=OUT 65535,254 
+										  
+ 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD			    NO            2xAY for CPC
+2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	        YES         	SAA Card for ZX
+                                                                     		  SAA 1099                511   255
+										  beeper (ULA)         	  254
+										  
 _____________________________________________________________________________________________________________________________________________________________
 
 NOTE: The bit order in the high byte must be carefully arranged, considering as many as possible chip configurations, 
