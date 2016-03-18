@@ -6,21 +6,21 @@ STD = standard
 The hardware list is:
 DEC	HiByte LoByte 	BIN APU	 BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	 Out ports	  introduced    info
 
-        0         0	    00000000 00000000	ZX Spectrum 	3494400 /50    	AY3-8910  @1773400	65533 49149	 YES           STD
-										                                                beeper	(ULA)         254
+        0         0	    00000000 00000000	ZX Spectrum 	3494400 /50    	  AY3-8910  @1773400	65533 49149	 YES           STD
+										  beeper (ULA)            254
  128	0       128	    00000000 10000000	Amstrad CPC 	4000000	/50	  AY 3-8910 @1000000	  STD		 YES           interrupt music 
- 129	0       129	    00000000 10000001	Amstrad CPC 	4000000	/50	  AY 3-8910 @1000000	  STD		 NO            full emulation 
-                                                                                                                  (samples, digi)
- 130	0	130	    00000000 10000010	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255      YES         	interrupt music
- 131	0	131	    00000000 10000011	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255	 NO          	full emulation
+ 129	0       129	    00000000 10000001	Amstrad CPC 	4000000	/50	  AY 3-8910 @1000000	  STD		  NO           full emulation 
+                                                                                                                  			(samples, digi)
+ 130	0	130	    00000000 10000010	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255      YES           interrupt music
+ 131	0	131	    00000000 10000011	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255	  NO           full emulation
 
- 256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	        YES           TurboSound
+ 256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	         YES           TurboSound
 										  active AY1=OUT 65535,255 AY2=OUT 65535,254 
 										  
- 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD			    NO            2xAY for CPC
-2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	        YES         	SAA Card for ZX
+ 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	         NO            2xAY for CPC
+2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	        YES            SAA Card for ZX
                                                                      		  SAA 1099                511   255
-										  beeper (ULA)         	  254
+										  beeper (ULA)         	        254
 										  
 _____________________________________________________________________________________________________________________________________________________________
 
