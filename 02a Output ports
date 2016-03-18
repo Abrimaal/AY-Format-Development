@@ -1,2 +1,2 @@
 Output ports for each song may be additionally defined in the 4-byte Amiga channel panning.
-The AYMakeR and AYSplittR should be re-compiled to display and modify these values.
+The AYMakeR and AYSplittR should be re-compiled to display these values and make them editable.
