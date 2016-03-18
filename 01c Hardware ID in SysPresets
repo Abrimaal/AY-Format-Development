@@ -8,7 +8,8 @@ DEC	HiByte LoByte 	   BIN APU   BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	
 
    0    0         0	    00000000 00000000	ZX Spectrum 	3494400 /50    	  AY3-8910 @1773400	65533 49149	 YES           STD
 										  beeper (ULA)            254
-   4    0         0	    00000000 00000100	ZX 81 + AY	3250000 /50    	  AY3-8910 @1773400	65533 49149	  NO	       ZX81 + external AY					  
+   2    0         2	    00000000 00000010	ZX 81 + AY	3250000 /50    	  AY3-8910 @1625000	65533 49149	  NO	       ZX81 + external AY
+   4    0         4         00000000 00000100   Pentagon 128  	3500000 /48.828   dependent on bit 11	65533 49149       NO   
  128	0       128	    00000000 10000000	Amstrad CPC 	4000000	/50	  AY3-8910 @16250000			 YES	       interrupt music
  129	0       129	    00000000 10000001	Amstrad CPC 	4000000	/50	  AY3-8910 @1000000	  STD		  NO           full emulation 
                                                                                                                   			(samples, digi)
@@ -18,7 +19,10 @@ DEC	HiByte LoByte 	   BIN APU   BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	
  256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	         YES           TurboSound
 										  active AY1=OUT 65535,255 AY2=OUT 65535,254 
 										  
- 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	          NO           2xAY for CPC
+ 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	          NO  	       2xAY for CPC
+1024    4         0         00000100 00000000   any		dependent         YM2149F instead of AY - uses volume table of YM        NO
+1028    4         4         00000100 00000100   Pentagon 128  	3500000 /48.828   YM2149F  @175000	65533 49149       NO           STD
+
 2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	         YES           SAA Card for ZX
                                                                      		  SAA 1099                511   255
 										  beeper (ULA)         	        254
@@ -27,3 +31,5 @@ ________________________________________________________________________________
 
 NOTE: The bit order in the high byte must be carefully arranged, considering as many as possible chip configurations, 
 multiple chips, custom sound cards. The values for 2xAY and SAA+AY may be temporary.
+
+Bit 2 of both bytes is 
