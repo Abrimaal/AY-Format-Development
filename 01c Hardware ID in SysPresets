@@ -31,7 +31,7 @@ ________________________________________________________________________________
 
 
 [1]
-Bit 2 of both bytes is destined to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1028), 
+Bit 2 of both bytes is dedicated to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1028), 
 the player uses frequencies native to Pentagon AND the YM2149F chip instead of AY3-891x (the volume table is different).
 The low byte  =4 changes the Z80, soundchip and interrupt frequencies to Pentagon 128
 The high byte =4 changes only the AY volume table to YM2149F volume table.
