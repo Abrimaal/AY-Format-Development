@@ -6,33 +6,40 @@ STD = standard
 The hardware list is:
 DEC	HiByte LoByte 	   BIN APU   BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	 Out ports	  introduced    info
 
-   0    0         0	    00000000 00000000	ZX Spectrum 	3494400 /50    	  AY3-8910 @1773400	65533 49149	 YES           STD
+   0    0         0	    00000000 00000000	ZX Spectrum 	3494400 /50    	  AY3-8910 @1773400	65533 49149	     YES           STD
 										  beeper (ULA)            254
-   2    0         2	    00000000 00000010	ZX 81 + AY	3250000 /50    	  AY3-8910 @1625000	65533 49149	  NO	       ZX81 + external AY
-   4    0         4         00000000 00000100   Pentagon 128  	3500000 /48.828   dependent on bit 11	65533 49149       NO   
- 128	0       128	    00000000 10000000	Amstrad CPC 	4000000	/50	  AY3-8910 @16250000			 YES	       interrupt music
- 129	0       129	    00000000 10000001	Amstrad CPC 	4000000	/50	  AY3-8910 @1000000	  STD		  NO           full emulation 
+   2    0         2	    00000000 00000010	ZX 81 + AY	3250000 /50    	  AY3-8910 @1625000	65533 49149	      NO	       ZX81 + external AY
+   4    0         4         00000000 00000100   Pentagon 128  	3500000 /48.828   AY3-8910 @1750000	65533 49149           NO   
+ 128	0       128	    00000000 10000000	Amstrad CPC 	4000000	/50	  AY3-8910 @1000000			     YES	       interrupt music
+ 129	0       129	    00000000 10000001	Amstrad CPC 	4000000	/50	  AY3-8910 @1000000	  STD		      NO           full emulation 
                                                                                                                   			(samples, digi)
- 130	0	130	    00000000 10000010	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255      YES           interrupt music
- 131	0	131	    00000000 10000011	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255	  NO           full emulation
+ 130	0	130	    00000000 10000010	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255          YES           interrupt music
+ 131	0	131	    00000000 10000011	SAM Coupe       6000000	/50	  SAA-1099  @STD          511   255	      NO           full emulation
 
- 256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	         YES           TurboSound
+ 256	1	  0	    00000001 00000000	ZX Spectrum	  STD	/50	  2x AY3-8910 @STD	  STD	             YES           TurboSound
 										  active AY1=OUT 65535,255 AY2=OUT 65535,254 
 										  
- 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	          NO  	       2xAY for CPC
-1024    4         0         00000100 00000000   any		dependent         YM2149F instead of AY - uses volume table of YM        NO
-1028    4         4         00000100 00000100   Pentagon 128  	3500000 /48.828   YM2149F  @175000	65533 49149       NO           STD
+ 384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	              NO  	       2xAY for CPC
+1024    4         0         00000100 00000000   ZX Spectrum	  read below [1]  YM2149F instead of AY uses volumes of YM    NO       to be used with any hardware
+1028    4         4         00000100 00000100   Pentagon 128     3500000 /48.828  YM2149F  @1750000	65533 49149           NO           STD
 
-2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	         YES           SAA Card for ZX
+2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	             YES           SAA Card for ZX
                                                                      		  SAA 1099                511   255
 										  beeper (ULA)         	        254
 										  
 _____________________________________________________________________________________________________________________________________________________________
 
-NOTE: The bit order in the high byte must be carefully arranged, considering as many as possible chip configurations, 
-multiple chips, custom sound cards. The values for 2xAY and SAA+AY may be temporary.
 
-Bit 2 of both bytes is destined to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1024), 
-the player uses frequencies native to Pentagon AND the YM2149F chip instead of AY3-891x (the volumes are different).
+[1]
+Bit 2 of both bytes is destined to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1028), 
+the player uses frequencies native to Pentagon AND the YM2149F chip instead of AY3-891x (the volume table is different).
+The low byte  =4 changes the Z80, soundchip and interrupt frequencies to Pentagon 128
+The high byte =4 changes only the AY volume table to YM2149F volume table.
 
+However the high byte = 4 may be combined with other hardware combinations to replace AY with YM2149F if the sound needs to be adjusted
+example for Pentagon 128 Turbosound (2xYM2149F)
+ DEC	HiByte LoByte 	   BIN APU   BIN CPU	Hardware	   Z80 /int freq	Soundchip(s)	
+1284     5         4       00000101  00000100   Pentagon 128     3500000 /48.828   YM2149F  @1750000	65533 49149           NO           STD	
+example for ZX 81 Turbosound with 2xYM2149F  			
+1282     5         2       00000101  00000010   ZX 81
 
