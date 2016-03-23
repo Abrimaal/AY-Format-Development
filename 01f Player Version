@@ -1,8 +1,9 @@
 Introduced player versions
 
-00010000 = 16 is double AY core. Plays two tracks simultaneously. 
+00010000 = 16 is double core, 2 x Z80 + 2 x soundchip(set). Plays two tracks simultaneously. 
 Both tracks must be the same SongLength. There must be an even number of tracks in the file. 
 An odd track placed as the last one is played normally.
+By now only one composition requires this setting.
 ____________________________________________________________________________________
 
 Introduction in progress
