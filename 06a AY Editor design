@@ -1,7 +1,15 @@
+[xxx] = window (text field)
+[[xxx]] = button
+* = editable field
+[v] = checkbox
+(a)(b) = a OR b radio 
+=======================================================================================================================
+
+
 [Browser][AY Editor][  ...  ][Settings]		  ;tabs
 ==========================================		;browser displays files in the current folder
-<- Back     ^ Up			       
-------------------------------------------		;buttons back and up
+<- Back     ^ Up			       		;buttons back and up
+------------------------------------------		
 no  name  	          	size    date		;sort by name,size,date
 ------------------------------------------      
 001 Filename_000.ay      	bytes 2000-10-20 ^	;file list	
@@ -17,31 +25,33 @@ file filter [ay][stc|pt3|bin|]*	[[reload]]		;displayed extensions, .ay always ac
 
 [AY Editor]			      	                          ;tabs
 ===========================================
-[[folder]][E:\music\aymusic\           path ]*		*=editable field
-[[openfile]] [File_name                ]*.[ay]		[[button]] [window]
+[[folder]][E:\music\aymusic\           path ]*		;open a folder with files or a single file
+[[openfile]] [File_name                ]*.[ay]		
 -------------------------------------------		    ;applicable to whole file
 File info:  type [AYEMUL]      				; type not editable, display only
 author [    -text-	                     ]*
 misc   [    -text-                           ]*
 player [1B]* file version [1B]* first song [1B]*
--------------------------------------------		    ;applicable to track
+-------------------------------------------		    ;applicable to active track
 Song info: panning [1B][1B][1B][1B]		          	;fields not editable yet
 title [     -text-		             ]*
 stack [ word]* init [ word]* interrupt [ word]*
-time [mm:ss.ccc]* [[#]]	hi [1B]* lo [1B]*	        ;alternate views # button toggles time to 1/50s value
-time [word     ]* [[#]] reg [ word]*		        ;toggle register value from hi/lo to word (dec or hex)
-syspreset [00000000]*[00000000]* [ZX48][    v]	      ;values in binary [   v] is a preset list
-[[FL]] [1B]* [1B]* [word]*	 [[DEC]]	       ;additionally as bytes and word	
+time [mm:ss.ccc]* [[#]]	hi [1B]* lo [1B]*	        ;alternate views # button toggles time mm:ss.ccc or 2B value
+time [word     ]* [[#]] reg [ word]*		        ;and toggles register value from hi/lo byte to word (dec or hex)
+syspreset [00000000]*[00000000]* 			;values in binary
+[1B]* [1B]* [word]*					;additionally as bytes and word
+[          ZX 48  ][    v]	       			;displays system config (not editable field) [   v] is a preset list
+[[FL]] 			 [[DEC]]	       		;for older players FL displays FadeLength instead of Syspresets
 -------------------------------------------	      ;DEC/HEX applies to all byte/word values
 Code info:		[[current song]]	      ;button toggles loaded blocks for current song or whole file
-[word]*[word]		[view]!	[X]		        ;blocks load address, code length          
-[word]*[word]		[view]!	[X]		                    
-[word]*[word]		[view]!	[X] [+]	                	;X=delete block +=add block
+[word]*[word]		[[view]]!	[X]	      ;blocks load address, code length          
+[word]*[word]		[[view]]!	[X]           ;!opens block in ZX Preview (add .bin to supported files)            
+[word]*[word]		[[view]]!	[X] [+]	       ;X=delete block +=add block
 --------------------------------------------
 [[<]]prev song		[[>]]next song	              	;buttons highlighted if more>1 songs
 song order 01<02<03<04   		                    	;change song order
 [[+]]add song          			                    	;add song button optional here
---------------------------------------------	    ;!open in ZX Preview add .bin to supported files 
+--------------------------------------------	    
 [[   APPLY CHANGES   ]]	  [[restore]]		     ;THE MOST IMPORTANT - creates backup, creates .ini file, runs AYMaker
 --------------------------------------------	    
 Play in [[app1]] [[app2]] [[app3]] 	            ;external players to test, displayed app icons
@@ -53,11 +63,11 @@ end
 
 
 [Settings]
-Source folder: [path           ]*       [...]       ;path to paste or [...] button to browse
-Save (output) folder: [path         ]*  [...] 
-  [v] Save in source folder with suffix [text]      ;save modified files in the original folder
+Source folder: [path           ]*       [...]   	  ;path to paste or [...] button to browse
+Save (output) folder: [path         ]*  [...] 	
+ [v] Save in source folder with a suffix [text]  	  ;save modified files in the original folder
 AYMaker location: [path         ]*      [...]
-  [v] Delete .ini files after save		    ; [v] = checkbox
+ [v] Delete .ini files after save			  ; [v] = checkbox
 External player 1: [path         ]*     [...]
 External player 2: [path         ]*     [...]
 External player 3: [path         ]*     [...]
@@ -86,7 +96,8 @@ Load address: [ word ] [ ]
 Init address: [ word ] [ ]
 Int. address: [ word ] [V]      			;interrupt address increased 
 Registers: [Hi] [ ] [Lo] [ ] 
+Time: [ word ] [+/-] by [ 10]*				;for precise setting of the playing time, inc/dec by *number
 [[TEST]]						;click increases the value, updates the .ay file and runs in a player
 
-updated 2016-02-19
+updated 2016-03-19
 free licence by Abrimaal
