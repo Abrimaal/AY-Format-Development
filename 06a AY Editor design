@@ -53,17 +53,17 @@ end
 
 
 [Settings]
-Source folder: [path           ]*       [...]       ;path to copy or [...] button to browse
+Source folder: [path           ]*       [...]       ;path to paste or [...] button to browse
 Save (output) folder: [path         ]*  [...] 
   [v] Save in source folder with suffix [text]      ;save modified files in the original folder
 AYMaker location: [path         ]*      [...]
-  [v] Delete .ini files after save
+  [v] Delete .ini files after save		    ; [v] = checkbox
 External player 1: [path         ]*     [...]
 External player 2: [path         ]*     [...]
 External player 3: [path         ]*     [...]
 Display numbers as (DEC)(HEX)		               ;radio options for default settings at startup
 Display time as (mm:ss.ccc)(1/50s)	          	
-Display (SysPresets)(Fadelength)		       ;button [[FL]] in the main window
+Display (SysPresets)(Fadelength)		       ;button [[FL]] in the Editor tab
 Displayed extensions [stc|bin|ini|pt3]*		       ;user-defined extensions displayed in browser except .ay, may be empty 						  
 =============================================
 end
@@ -80,6 +80,13 @@ author [Chipcrusher] changes any author name to Chipcrusher, not changing other 
 Also .cop player for SAA chip and some beeper trackers.
 
 [Join files] - join two or more .ay files into one or split a multitrack file into single song files.
+
+[Stupid Jack] - for songs that play with errors or the addresses are hard to find. Increases the selected value by 1.
+Load address: [ word ] [ ] 
+Init address: [ word ] [ ]
+Int. address: [ word ] [V]      			;interrupt address increased 
+Registers: [Hi] [ ] [Lo] [ ] 
+[[TEST]]						;click increases the value, updates the .ay file and runs in a player
 
 updated 2016-02-19
 free licence by Abrimaal
