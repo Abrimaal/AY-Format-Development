@@ -41,3 +41,37 @@ This applies to ZX Spectrum emulation: in .ay files all the 64kB memory is writa
 and the slow RAM shared with ULA (#4000 - #7FFF) is not emulated. 
 Music can be compiled at any address if it does not use ROM. 
 If it uses ROM, it may still be compiled between 16384 and 32767.
+
+==========================================================================================
+
+2016-05 Abandoned. The address of the main loop is removed from PlayerVersion. Instead it is defined in the field FirstSong. 
+Player Versions in use are 0 to 3 and 16.
+
+Original text from 2015:
+
+Bits 2-3 of PlayerVersion
+
+----xx--
+
+Bits 2 and 3 place the main loop of the Z80 emulator at different addresses. 
+Originally the main loop is located at address 0 to 15. 
+Machines with writable memory from 0 may store custom data required for playing music or use RST 0 and RST 8 
+to call music routines. 
+
+Moving the main loop was tested with addresses
+----01-- PlayerVersion=4 places the loop at #4000
+----10-- PlayerVersion=8                    #8000
+----11-- PlayerVersion=9                    #C000
+
+These addresses are common locations of music files, so better to use values that do not collide with music files. 
+AYMaker does not allow to load data at address 0, a temporary solution is loading it at a different address and move at init
+using Z80 LDIR or LDDR commands. 
+
+These player versions may be used together with existing players 0-3.
+
+Examples
+---00110 PlayerVersion=6 is a combination of Player 2 and the main loop at a different address
+---11111 PlayerVersion=31 combines PlayerVersion=3, loop at another address and Dual AY Core
+
+end of 2016-05 Abandoned
+==================================================================================================
