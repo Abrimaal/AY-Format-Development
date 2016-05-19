@@ -22,11 +22,6 @@ DEC	HiByte LoByte 	   BIN APU   BIN CPU	Hardware	    Z80 /int freq	Soundchip(s)	
  384	1	  0	    00000001 10000000	Amstrad CPC	   STD	/50	  2x AY3-8910 @1Mhz	  STD	              NO  	       2xAY for CPC
 1024    4         0         00000100 00000000   ZX Spectrum	  read below [1]  YM2149F instead of AY uses volumes of YM    NO       to be used with any hardware
 1028    4         4         00000100 00000100   Pentagon 128     3500000 /48.828  YM2149F  @1750000	65533 49149           NO           STD
-
-2048	8	  0	    00001000 00000000	ZX Spectrum	   STD	/50	  AY 3-8910               STD	             YES           SAA Card for ZX
-                                                                     		  SAA 1099                511   255
-										  beeper (ULA)         	        254
-										  
 _____________________________________________________________________________________________________________________________________________________________
 
 
@@ -34,7 +29,7 @@ ________________________________________________________________________________
 Bit 2 of both bytes is dedicated to emulate the classic Pentagon 128k. When both bits are set in both bytes (value=1028), 
 the player uses frequencies native to Pentagon AND the YM2149F chip instead of AY3-891x (the volume table is different).
 The low byte  =4 changes the Z80, soundchip and interrupt frequencies to Pentagon 128
-The high byte =4 changes only the AY volume table to YM2149F volume table.
+The high byte =4 changes only the AY volume table to YM2149F volume table. 
 
 However the high byte = 4 may be combined with other hardware combinations to replace AY with YM2149F if the sound needs to be adjusted
 example for Pentagon 128 Turbosound (2xYM2149F)
@@ -43,3 +38,15 @@ example for Pentagon 128 Turbosound (2xYM2149F)
 example for ZX 81 Turbosound with 2xYM2149F  			
 1282     5         2       00000101  00000010   ZX 81
 
+In music that uses only square waves, the difference is faster fading of the volume. 
+The saw and triangle waves are built from volumes 0-15, the overall volume of these waves is lower than in the AY chip.
+
+================================================================================================================
+
+Abandoned 2016-05
+
+SysPresets=2048 (bin 1000 0000 0000) that defined "ZX Spectrum with an external SAA-1999 chip" in no longer valid. 
+The SAA chip is regarded as "always connected" on ports 511 and 255, 
+so a special preset is not required, as the SAA chip does not collide any way with AY and beeper.
+For emulation of ZX Spectrum with a SAA chip, use SysPresets=0
+================================================================================================================
