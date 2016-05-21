@@ -18,7 +18,7 @@ These 16 settings specify the location of the main loop, where
 Values 1-15 place the loop at different addresses, according to this scheme:
 
 HEX:
-value * #1000 - #F
+value * #1000 - #10
 DEC:
 value * 4000 - 16
 
