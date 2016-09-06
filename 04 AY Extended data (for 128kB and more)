@@ -1,0 +1,76 @@
+Extra data blocks can be added to the standard AY files. The number of extra blocks is unlimited.
+Bit 6 of FirstSong set indicates that this file has extended data blocks.
+
+Structure:
+
+|______________________|_|____________|_|__________|_|____________________|
+^ AY FILE with header ^ H Data block   H Data block H Data block and so on
+
+H = header of the extra block
+||____2B____|____2B____|__1B__|____2B____|____2B____|____2B____|____2B____||______ Data block_______ ....___|
+|load addr. |block len.|OUT/LD|port addr.|OUT/LD val|ret. addr.|ret. value||
+
+Load address (2B) is the address in memory where the block is loaded. In theory it may be up to 65536 bytes, 
+but the AY file uses an internal loop that is responsible for playing music, that is 9 or 13 bytes,
+placed by default at address 0 (the address may be different - see the FirstSong document).
+This internal loop may be copied to the block if the Load address overlaps the loop.
+Load address also must not collide with the stack.
+
+Block length (2B) is the length of the block and the indicator of the beginning of the next block or end of file.
+It must be identical with the real length of the data block.
+
+OUT/LD (1B) specifies if the memory block is switched by OUT or LD command (a value in the memory, a system variable etc.)
+1 bit (not byte would be enough) to specify it, but there may exist other methods of switching blocks in various hardware.
+
+Port address is the address of the OUT port that loads the block into the AY main memory. 
+In real hardware this is called RAM paging or bank switching.
+If the previous byte OUT/LD is LD, the address is a memory address, not an output port.
+
+OUT/LD value (2B) is the value of OUT command or value in the memory that activates this block.
+For OUT the value is always 1B, for LD, reading from the memory it has been increased to 2 bytes,
+however some system variables may be much longer. 
+This part requires more research.
+
+Return address (2B) and Return value (2B) are the values used to unload the extra block 
+and reload the initial AY file content.
+
+Extra blocks are simply added to the AY file by Copy/Paste in a binary editor like Hexplorer.
+
+-------------------------------------------------------------------------------------------------------
+
+
+The AY standard uses little endian byte order in the header, but big endian in the data for Z80.
+It should be decided if to use the little endian (Motorola order) or big (Intel and Z80 order)
+
+Example for a 16kB block switched at address #COOO (49152) by OUT 255,16 and returning with OUT 255,0
+
+in little endian, in HEX
+
+CC 00       ;load address
+40 00       ;block length
+00          ;OUT command switches banks, for LD this byte = 01
+00 FF       ;out port
+00 10       ;value = decimal 16
+00 FF       ;return port is the same
+00 00       ;return value (reloads the AY file initial content)
+
+in big endian, in HEX
+
+00 CC       ;load address
+00 40       ;block length
+00          ;OUT command switches banks, for LD this byte = 01
+FF 00       ;out port
+10 00       ;value = decimal 16
+FF 00       ;return port is the same
+00 00       ;return value (reloads the AY file initial content)
+
+===============================================================================================
+
+
+
+
+
+
+
+
+
