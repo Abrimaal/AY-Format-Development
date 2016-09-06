@@ -1,5 +1,7 @@
 Extra data blocks can be added to the standard AY files. The number of extra blocks is unlimited.
+The beginning of the first extra block is calculated by summarizing all internal AY file blocks.
 Bit 6 of FirstSong set indicates that this file has extended data blocks.
+
 
 Structure:
 
@@ -14,7 +16,7 @@ Load address (2B) is the address in memory where the block is loaded. In theory 
 but the AY file uses an internal loop that is responsible for playing music, that is 9 or 13 bytes,
 placed by default at address 0 (the address may be different - see the FirstSong document).
 This internal loop may be copied to the block if the Load address overlaps the loop.
-Load address also must not collide with the stack.
+Load address must not collide with the stack.
 
 Block length (2B) is the length of the block and the indicator of the beginning of the next block or end of file.
 It must be identical with the real length of the data block.
