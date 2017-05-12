@@ -68,7 +68,17 @@ FF 00       ;return port is the same
 
 ===============================================================================================
 
-
+Some hardware may use more than a single command to switch RAM pages, so it must be discussed
+to store the Z80 command sequences in the header (machine code values, not assembler commands).
+For example - for switching a bank
+LD A,1
+LD BC,NN
+OUT (C),A 
+for return to the original RAM
+XOR A
+LD BC,NN
+OUT (C),A
+The length of the sequence in bytes must be stored in the preceeding byte.
 
 
 
