@@ -1,6 +1,6 @@
 Extra data blocks can be added to the standard AY files. The number of extra blocks is unlimited.
 The beginning of the first extra block is calculated by summarizing all internal AY file blocks.
-Bit 6 of FirstSong set indicates that this file has extended data blocks.
+Bit 6 of FirstSong set indicates that this file contains extra data blocks.
 
 
 Structure:
@@ -8,7 +8,7 @@ Structure:
 |______________________|_|____________|_|__________|_|____________________|
 ^ AY FILE with header ^ H Data block   H Data block H Data block and so on
 
-H = header of the extra block
+H = header of the extra block 
 ||____2B____|____2B____|__1B__|____2B____|____2B____|____2B____|____2B____||______ Data block_______ ....___|
 |load addr. |block len.|OUT/LD|port addr.|OUT/LD val|ret. addr.|ret. value||
 
@@ -69,7 +69,7 @@ FF 00       ;return port is the same
 ===============================================================================================
 
 Some hardware may use more than a single command to switch RAM pages, so it must be discussed
-to store the Z80 command sequences in the header (machine code values, not assembler commands).
+to store the Z80 command sequences in the header (machine code values, not assembler commands) instead of the above.
 For example - for switching a bank
 LD A,1
 LD BC,NN
