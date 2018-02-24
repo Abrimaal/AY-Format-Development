@@ -14,28 +14,26 @@ This order makes some files playable.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ___________________________________________________________________________________
-
-PROPOSAL - not introduced, incompatible with existing .ay emulators.
+Not introduced yet
 
 000000|xx - standard players 0-3
-010xxx|xx - requires ROM
-   xxx - which ROM from 8 available, imported from the application.
-010000|03 - example for ZX Spectrum 48 ROM and player=3
+xx10xx|xx - requires ROM
+  10xx - which ROM from 4 common ROMs imported from the application.
+001000|03 - example for ZX Spectrum 48 ROM and player=3
 
-100xxx|xx - proposal for common tracker players, to reduce the file size
-   xxx - which player
+x1x0xx|xx - proposal for common tracker players, to reduce the file size
+   0xx - which player from 4 common players (suggested: stc, pt3 and two more)
 
 
-100xxx|xx - requires a standarized tracker, no ROM
-110000|xx - requires both a player and ZX48k ROM 
+x10xxx|xx - requires a standarized tracker, no ROM
+x11000|xx - requires both a player and ZX48k ROM 
 This ROM is commonly used by sound engines that perform CALLs to ROM, 
 use ROM for generating noises or require the fragment filled with 255 located at the end as interrupt vector table. 
 
-For both bits 6 and 7 set, the lower bits specify the tracker player (not ROM). 
-
+For both bits 5 and 6 set, bits 2 and 3 specify the tracker player (not ROM). 
 If the Tracker and ROM bits are set, the emulator loads ZX48 ROM at address 0.
 
-100001|00 - it may be .stc player preloaded at the lowest possible address.  
+x10001|00 - it may be .stc player preloaded at the lowest possible address.  
 The .ay file contains music data only loaded at the corresponding address. In this case CodeAddress is ignored. 
 
 This applies to ZX Spectrum emulation: in .ay files all the 64kB memory is writable 
