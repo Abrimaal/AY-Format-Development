@@ -18,20 +18,21 @@ ________________________________________________________________________________
 PROPOSAL - not introduced, incompatible with existing .ay emulators.
 
 000000|xx - standard players 0-3
-01xxxx|xx - requires ROM
-  xxxx - which ROM from 16 available, imported from the application.
+010xxx|xx - requires ROM
+   xxx - which ROM from 8 available, imported from the application.
 010000|03 - example for ZX Spectrum 48 ROM and player=3
 
-10xxxx|xx - proposal for common tracker players, to reduce the file size
-  xxxx - which player
+100xxx|xx - proposal for common tracker players, to reduce the file size
+   xxx - which player
 
 
-10xxxx|xx - requires a standarized tracker, no ROM
-11xxxx|xx - requires both a player and ZX48k ROM 
+100xxx|xx - requires a standarized tracker, no ROM
+110000|xx - requires both a player and ZX48k ROM 
 This ROM is commonly used by sound engines that perform CALLs to ROM, 
 use ROM for generating noises or require the fragment filled with 255 located at the end as interrupt vector table. 
 
 For both bits 6 and 7 set, the lower bits specify the tracker player (not ROM). 
+
 If the Tracker and ROM bits are set, the emulator loads ZX48 ROM at address 0.
 
 100001|00 - it may be .stc player preloaded at the lowest possible address.  
