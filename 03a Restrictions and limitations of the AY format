@@ -14,6 +14,4 @@ JP song_init
 Repeat the sequence for all songs and assembly it together with the data block at the lowest address (recommended 16). 
 
 
-2. 64kB limit. Re-compiling AYMakeR and AYSplitter and changing offset values from 2 bytes to 4 will open new possibilities, 
-but it will be not compatible with the existing players. 
-This modification will allow to emulate memory banks and play uncompressed register dumps in the linear RAM.
+2. 64kB limit. See .AY file Extended Data section
