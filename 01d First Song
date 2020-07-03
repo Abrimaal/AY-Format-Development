@@ -3,7 +3,7 @@ The field FirstSong (1 byte)
 Bit 7 set 1xxxxxxx changes the AY channel layout from ABC to ACB. 
 Some music trackers and emulators allow to use different layouts (BAC, BCA, CAB, CBA). 
 It is physically possible to connect AY output pins these ways, but not used in the hardware.
-ZX Spectrum music made in the Czech Rep., Slovakia and formerly Czechoslovakia often use ACB channel layout. 
+ZX Spectrum music made in some countries used ACB channel layout, because a ZX clone with ACB layout was popular there. 
 The most of tracker music in the .ay files (mainly .sqt) have been modified in a tracker to play ABC.
 When it's necessary to change the layout, the value of FirstSong should be changed
 eg. from 0 to 128
