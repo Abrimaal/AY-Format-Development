@@ -1,5 +1,5 @@
 The field FirstSong (1 byte).
-The name FirstSong remained, but it is used for different purposes. 
+The name FirstSong remained, but it is used for various purposes. 
 
 Bit 7 set 1xxxxxxx changes the AY channel layout from ABC to ACB. 
 Some music trackers and emulators allow to use different layouts (BAC, BCA, CAB, CBA). 
@@ -11,8 +11,8 @@ eg. from 0 to 128
 
 xxxxxXXX
 Bits 0-2 define the first song, if the first song to play is not the first song in the AY file 
-It is extremely rare, in most cases it is = 0
-This is why the number has been reduced from 256 to 7, because almost every AY file can be edited 
+It is extremely rare, in most cases it is = 0, because songs and blocks loading order matches the song order.
+This is why the number has been reduced from 256 to 7 (8 bits to 3 bits), because almost every AY file can be edited 
 to set the proper order of songs. Some files where the first song is the last, because of its size,
 rather do not exceed 8 songs. 
 In most cases the content of any .ay file can be packed into one block 
