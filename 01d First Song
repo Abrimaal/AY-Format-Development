@@ -9,12 +9,17 @@ The most of tracker music in the .ay files (mainly .sqt) have been modified in a
 When it's necessary to change the layout, the value of FirstSong should be changed
 eg. from 0 to 128
 
-xxxxxxXX
-Bits 0-1 define the first song, if the first song to play is not the first song in the AY file 
+xxxxxXXX
+Bits 0-2 define the first song, if the first song to play is not the first song in the AY file 
 It is extremely rare, in most cases it is = 0
+This is why the number has been reduced from 256 to 7, because almost every AY file can be edited 
+to set the proper order of songs. Some files where the first song is the last, because of its size,
+rather do not exceed 8 songs. 
+In most cases the content of any .ay file can be packed into one block 
+and launched by moving the desired data, setting registers using simple Z80 code.
 
-xxxxXXxx
-Bits 2-3 define the address of the main loop of the Z80 emulator. 
+xXXXXxxx
+Bits 3-6 define the address of the main loop of the Z80 emulator. 
 Originally the main loop is located at address 0 to 7 or 0 to 12. 
 Machines with writable memory from 0 may store custom data required for playing music or use RST 0 and RST 8 
 to call music routines. 
